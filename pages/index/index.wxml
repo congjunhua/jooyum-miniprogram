@@ -1,0 +1,126 @@
+<!-- 自定义导航栏 -->
+<view
+	class="navigation-bar"
+	style="height: {{capsule.bottom + 16}}px"
+>
+	<view
+		class="flex-row navigation-bar-content"
+		style="height: {{capsule.bottom - capsule.top}}px; top: {{capsule.top}}px"
+	>
+		<!-- 消息 -->
+		<view
+			wx:if="{{messages.length > 0}}"
+			class="messages"
+		>
+			<mp-icon
+				icon="bellring-on"
+				extClass="bellring"
+				size="32"
+				color="{{colors.color}}"
+			/>
+			<mp-badge
+				extClass="badge"
+				content="{{messages.length}}"
+			/>
+		</view>
+
+		<!-- 问候 -->
+		<text 
+			class="hello" 
+			style="max-width: calc({{capsule.left}}px - 64px)"
+		>{{dayStage}}好！{{user.name + user.gender}}</text>
+	</view>
+</view>
+
+<!-- Banner -->
+<swiper
+	indicator-dots
+	indicator-active-color="{{colors.color}}"
+	style="margin-top: {{capsule.bottom + 16}}px"
+>
+	<block
+		wx:for="{{[1, 2, 3, 4, 5]}}"
+		wx:key="*this"
+	>
+		<swiper-item>
+			<view 
+				class="swiper-item"
+				style="background: #CBF3DE"
+			/>
+		</swiper-item>
+	</block>
+</swiper>
+
+<!-- 主功能区 -->
+<view
+	class="flex-row main-functions"
+>
+	<view
+		wx:for="{{functions.main.items}}"
+		wx:key="*this"
+		class="flex-column main-function"
+	>
+		<mp-icon
+			icon="star"
+			color="{{colors.color}}"
+			size="40"
+		/>
+		<text>功能{{index + 1}}</text>
+	</view>
+</view>
+
+<!-- 子功能区 -->
+<scroll-view
+	scroll-y
+	show-scrollbar="{{false}}"
+	style="height: {{rect.screenHeight - capsule.bottom - 16 - 150 - 78 - 53 - rect.unsafeHeight - 32}}px"
+>
+	<view class="flex-row sub-functions">
+		<view
+			wx:for="{{functions.sub.items}}"
+			wx:key="*this"
+			class="flex-column sub-function"
+			id="{{index}}"
+			bind:tap="sub"
+		>
+			<mp-icon
+				icon="star"
+				color="{{colors.color}}"
+				size="64"
+				type="field"
+			/>
+			<text class="sub-function-text">功能{{item}}</text>
+		</view>
+	</view>
+</scroll-view>
+
+<!-- 子功能弹窗 -->
+<view
+	class="flex-column modal"
+	wx:if="{{show}}"
+	id="close"
+	bind:tap="close"
+>
+	<view
+		class="flex-column modal-content"
+	>
+		<!-- 标题 -->
+		<view class="modal-title">功能{{functions.sub.items[functions.sub.current]}}</view>
+		<!-- 功能列表 -->
+		<view class="flex-row modal-items">
+			<view
+				wx:for="{{functions.modal.items}}"
+				wx:key="*this"
+				class="flex-column modal-item"
+			>
+				<mp-icon
+					icon="star"
+					color="{{colors.color}}"
+					size="56"
+					type="field"
+				/>
+				<text class="modal-item-text">功能{{index + 1}}</text>
+			</view>
+		</view>
+	</view>
+</view>

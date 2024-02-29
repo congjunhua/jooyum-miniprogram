@@ -1,0 +1,30 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/assistant/index",
+		"pages/common/index",
+		"pages/analysis/index",
+		"pages/me/index"
+	],
+	"window": {
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "black",
+		"navigationBarBackgroundColor": "#ffffff"
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json",
+	"lazyCodeLoading": "requiredComponents",
+	"useExtendedLib": {
+		"weui": true
+	},
+	"tabBar": {
+		"custom": true,
+		"list": [
+			{"pagePath": "pages/index/index"},
+			{"pagePath": "pages/assistant/index"},
+			{"pagePath": "pages/common/index"},
+			{"pagePath": "pages/analysis/index"},
+			{"pagePath": "pages/me/index"}
+		]
+	}
+}

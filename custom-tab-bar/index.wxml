@@ -1,0 +1,38 @@
+<!-- 自定义 TabBar -->
+<view
+	class="bars"
+>
+	<view
+		class="bar"
+		wx:for="{{items}}"
+		wx:key="*this"
+		id="{{index}}"
+		bind:tap="tap"
+		style="padding-bottom: 4px;"
+	>
+		<!-- icon -->
+		<mp-icon
+			wx:if="{{index !== 2}}"
+			icon="star"
+			size="32"
+			type="{{index === selected ? 'field' : 'outline'}}"
+			color="{{index === selected ? color : 'grey'}}"
+		/>
+		<view
+			wx:if="{{index === 2}}"
+			class="main"
+		>
+			<mp-icon
+				icon="add"
+				size="40"
+				type="field"
+				color="white"
+			/>
+		</view>
+		<!-- text -->
+		<text 
+			class="{{index === 2 ? 'main-text' : ''}}"
+			style="color: {{index === selected ? color : 'black'}}; opacity: {{index === selected ? 1 : .5}}"
+		>{{item}}</text>
+	</view>
+</view>

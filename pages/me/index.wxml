@@ -1,0 +1,4 @@
+<!--pages/me/index.wxml-->
+<view class="tab-page">
+	<text>pages/me/index.wxml</text>
+</view>
